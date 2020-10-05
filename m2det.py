@@ -308,7 +308,7 @@ class SFAM(chainer.Chain):
     def __call__(self, x):
         ys = []
         for s in range(self.scales):
-            h = F.concat((x[l][s] for l in range(self.levels)), axis=1)
+            h = F.concat([x[l][s] for l in range(self.levels)], axis=1)
             ys.append(self.ses[s](h))
 
         return ys
